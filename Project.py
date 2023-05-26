@@ -1,4 +1,5 @@
 import cv2 ## Importamos la librería OPENCV
+import numpy as np
 
 ##Utilizando el comando imread de opencv, leeremos la imagen 1.jpeg y la guardaremos en la variable img
 imagen = cv2.imread("imagen1.jpg")
@@ -23,3 +24,11 @@ parte1 = imagen[:mitad_alto, :mitad_ancho]
 parte2 = imagen[:mitad_alto, mitad_ancho:]
 parte3 = imagen[mitad_alto:, :mitad_ancho]
 parte4 = imagen[mitad_alto:, mitad_ancho:]
+
+
+# Traslación
+dx = 50  # Desplazamiento horizontal
+dy = 50  # Desplazamiento vertical
+
+# Realizar traslación en la parte 1
+parte1_traslacion = cv2.warpAffine(parte1, np.float32([[1, 0, dx], [0, 1, dy]]), (mitad_ancho, mitad_alto))
