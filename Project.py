@@ -1,7 +1,7 @@
 import cv2 ## Importamos la librería OPENCV
 
 ##Utilizando el comando imread de opencv, leeremos la imagen 1.jpeg y la guardaremos en la variable img
-imagen = cv2.imread("1.jpeg")
+imagen = cv2.imread("imagen1.jpg")
 ## Utilizando el comando imshow de opencv, mostraremos la imagen en una ventana llamada ventana1
 #cv2.imshow("ventana1", img)
 ##Controla el tiempo de muestreo de la señal de entrada por teclado
