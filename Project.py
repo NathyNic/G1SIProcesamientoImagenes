@@ -22,20 +22,24 @@ mitad_ancho = int(ancho / 2)
 print(mitad_alto)
 print(mitad_ancho)
 
-# Dividir la imagen en 4 partes
-#parte1 = imagen[:mitad_alto, :mitad_ancho]
-#parte2 = imagen[:mitad_alto, mitad_ancho:]
-#parte3 = imagen[mitad_alto:, :mitad_ancho]
-#parte4 = imagen[mitad_alto:, mitad_ancho:]
+# Dividir la imagen en 2 partes
 
-parte1 = imagen[:mitad_alto, :ancho]
-parte2 = imagen[mitad_alto:, :ancho]
+partesuperior = imagen[:mitad_alto, :ancho]
+parteinferior = imagen[mitad_alto:, :ancho]
+
+# Divide la parte superior en dos partes
+parte_superior_izquierda = partesuperior[:, :mitad_ancho]
+parte_superior_derecha = partesuperior[:, mitad_ancho:]
+
+# Intercambia las partes superiores entre sí
+parte_superior_izquierda, parte_superior_derecha = parte_superior_derecha, parte_superior_izquierda
 
 # Voltea la mitad inferior vertical y horizontalmente
-parte_inferior_volteada = cv2.flip(parte2, -1)
+parte_inferior_volteada = cv2.flip(parteinferior, -1)
 
 # Combina las dos partes de la imagen
-imagen_final = np.concatenate((parte1, parte_inferior_volteada), axis=0)
+imagen_semifinal = np.concatenate((parte_superior_izquierda, parte_superior_derecha), axis=1)
+imagen_final = np.concatenate((imagen_semifinal, parte_inferior_volteada), axis=0)
 
 # Muestra la imagen original y la imagen final
 cv2.imshow("Imagen Original", imagen)
