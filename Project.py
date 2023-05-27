@@ -31,6 +31,13 @@ parteinferior = imagen[mitad_alto:, :ancho]
 parte_superior_izquierda = partesuperior[:, :mitad_ancho]
 parte_superior_derecha = partesuperior[:, mitad_ancho:]
 
+# Realiza la traslación en x e y de las partes superiores
+#traslacion_x = ancho - (mitad_ancho)
+#traslacion_y = 0
+
+#parte_superior_izquierda_traslada = np.roll(parte_superior_izquierda, traslacion_x, axis=1)
+#parte_superior_derecha_traslada = np.roll(parte_superior_derecha, -traslacion_x, axis=1)
+
 # Intercambia las partes superiores entre sí
 parte_superior_izquierda, parte_superior_derecha = parte_superior_derecha, parte_superior_izquierda
 
@@ -38,6 +45,7 @@ parte_superior_izquierda, parte_superior_derecha = parte_superior_derecha, parte
 parte_inferior_volteada = cv2.flip(parteinferior, -1)
 
 # Combina las dos partes de la imagen
+#imagen_semifinal = np.concatenate((parte_superior_derecha_traslada, parte_superior_izquierda_traslada), axis=1)
 imagen_semifinal = np.concatenate((parte_superior_izquierda, parte_superior_derecha), axis=1)
 imagen_final = np.concatenate((imagen_semifinal, parte_inferior_volteada), axis=0)
 
