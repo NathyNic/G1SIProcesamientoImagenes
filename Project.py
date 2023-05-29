@@ -1,3 +1,6 @@
+
+#Pichilingue Pimentel, Nathaly Nicole - COD 19200247
+
 import cv2 ## Importamos la librería OPENCV
 import numpy as np
 
